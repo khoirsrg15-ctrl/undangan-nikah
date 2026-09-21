@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Undangan Pernikahan</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f8f2ea;
+    color:#4b3b31;
+}
+
+button,input,textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* ================= COVER ================= */
+
+.cover{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    color:white;
+
+    background:
+    linear-gradient(rgba(45,30,20,.55),rgba(45,30,20,.65)),
+    var(--cover-image);
+    background-size:cover;
+    background-position:center;
+}
+
+.cover-content{
+    max-width:700px;
+}
+
+.small-title{
+    letter-spacing:5px;
+    font-size:13px;
+}
+
+.cover h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    font-weight:500;
+    margin:15px 0;
+}
+
+.cover-date{
+    font-size:15px;
+}
+
+.btn-open{
+    margin-top:30px;
+    padding:14px 30px;
+    border:1px solid white;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    color:white;
+    backdrop-filter:blur(8px);
+}
+
+/* ================= CONTENT ================= */
+
+#content{
+    display:none;
+}
+
+section{
+    padding:75px 20px;
+    text-align:center;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#8b7769;
+    line-height:1.8;
+}
+
+/* ================= COUPLE ================= */
+
+.couple{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.person{
+    width:280px;
+}
+
+.person img{
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius:50%;
+    border:7px solid white;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+}
+
+.person h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px;
+    margin:15px 0 5px;
+}
+
+.and{
+    font-family:'Cormorant Garamond',serif;
+    font-size:50px;
+}
+
+/* ================= EVENT ================= */
+
+.event{
+    background:#eee2d5;
+}
+
+.event-box{
+    max-width:650px;
+    margin:30px auto 0;
+    background:white;
+    padding:35px 25px;
+    border-radius:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.event-box h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:35px;
+}
+
+.info{
+    margin:20px 0;
+    line-height:2;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 22px;
+    border:none;
+    border-radius:30px;
+    text-decoration:none;
+    background:#806b5c;
+    color:white;
+    margin:5px;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.time{
+    min-width:80px;
+    padding:15px 10px;
+    background:white;
+    border-radius:15px;
+}
+
+.time strong{
+    display:block;
+    font-size:25px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:30px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* ================= QUOTE ================= */
+
+.quote{
+    background:#4d3d32;
+    color:white;
+}
+
+.quote p{
+    max-width:700px;
+    margin:auto;
+    font-family:'Cormorant Garamond',serif;
+    font-size:27px;
+    line-height:1.7;
+}
+
+/* ================= RSVP ================= */
+
+.form-box{
+    max-width:600px;
+    margin:auto;
+}
+
+.form-box input,
+.form-box textarea{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:1px solid #ddd;
+    border-radius:12px;
+}
+
+.form-box textarea{
+    height:120px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:40px 20px;
+    text-align:center;
+    background:#30251f;
+    color:white;
+}
+
+/* ================= FLOAT BUTTON ================= */
+
+.settings-button{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#806b5c;
+    color:white;
+    font-size:22px;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* ================= SETTINGS ================= */
+
+.overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.panel{
+    max-width:650px;
+    margin:30px auto;
+    background:white;
+    border-radius:25px;
+    padding:25px;
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.panel-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:35px;
+}
+
+.close{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#eee;
+    font-size:20px;
+}
+
+.field{
+    margin-bottom:15px;
+    text-align:left;
+}
+
+.field label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:500;
+}
+
+.field input,
+.field textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.upload-preview{
+    width:100%;
+    max-height:180px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-top:8px;
+    display:none;
+}
+
+.save{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:#806b5c;
+    color:white;
+    font-size:16px;
+    margin-top:10px;
+}
+
+.reset{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    background:#eee;
+    color:#555;
+    margin-top:10px;
+}
+
+.share{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:#25D366;
+    color:white;
+    font-size:16px;
+    margin-top:10px;
+}
+
+/* ================= FLOWER ================= */
+
+.flower{
+    position:fixed;
+    top:-30px;
+    pointer-events:none;
+    z-index:3000;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .cover h1{
+        font-size:52px;
+    }
+
+    .title{
+        font-size:40px;
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery img{
+        height:160px;
+    }
+
+    .person{
+        width:100%;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     COVER
+===================================================== -->
+
+<div class="cover" id="cover">
+
+    <div class="cover-content">
+
+        <div class="small-title">
+            THE WEDDING OF
+        </div>
+
+        <h1 id="coverNames">
+            Nama Pria & Nama Wanita
+        </h1>
+
+        <p class="cover-date" id="coverDate">
+            Minggu, 20 Desember 2026
+        </p>
+
+        <button class="btn-open" onclick="openInvitation()">
+            💌 Buka Undangan
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ISI UNDANGAN
+===================================================== -->
+
+<div id="content">
+
+<section>
+
+<div class="container">
+
+    <p class="small-title">
+        ASSALAMUALAIKUM
+    </p>
+
+    <h2 class="title">
+        Dengan Memohon Ridho Allah SWT
+    </h2>
+
+    <p class="subtitle">
+        Dengan penuh kebahagiaan kami bermaksud
+        mengundang Bapak/Ibu/Saudara/i untuk hadir
+        dalam acara pernikahan kami.
+    </p>
+
+    <div class="couple">
+
+        <div class="person">
+
+            <img id="malePhoto" src="">
+
+            <h2 id="maleName">
+                Nama pria
+            </h2>
+
+            <p>
+                Putra dari<br>
+                Bapak & Ibu
+            </p>
+
+        </div>
+
+        <div class="and">
+            &
+        </div>
+
+        <div class="person">
+
+            <img id="femalePhoto" src="">
+
+            <h2 id="femaleName">
+                Nama Wanita
+            </h2>
+
+            <p>
+                Putri dari<br>
+                Bapak & Ibu
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="event">
+
+<div class="container">
+
+    <h2 class="title">
+        Menuju Hari Bahagia
+    </h2>
+
+    <div class="countdown">
+
+        <div class="time">
+            <strong id="days">0</strong>
+            Hari
+        </div>
+
+        <div class="time">
+            <strong id="hours">0</strong>
+            Jam
+        </div>
+
+        <div class="time">
+            <strong id="minutes">0</strong>
+            Menit
+        </div>
+
+        <div class="time">
+            <strong id="seconds">0</strong>
+            Detik
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ACARA -->
+
+<section>
+
+<div class="container">
+
+    <h2 class="title">
+        Waktu & Tempat
+    </h2>
+
+    <div class="event-box">
+
+        <h3 id="eventTitle">
+            Akad Nikah & Resepsi
+        </h3>
+
+        <div class="info">
+
+            📅 <span id="eventDate">
+                Minggu, 20 Desember 2026
+            </span>
+
+            <br>
+
+            ⏰ <span id="eventTime">
+                10.00 WIB - Selesai
+            </span>
+
+            <br>
+
+            📍 <span id="eventLocation">
+                Gedung Pernikahan
+            </span>
+
+        </div>
+
+        <a
+            class="btn"
+            id="mapsButton"
+            target="_blank"
+            href="#">
+            📍 Google Maps
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- GALERI -->
+
+<section>
+
+<div class="container">
+
+    <h2 class="title">
+        Galeri Kami
+    </h2>
+
+    <p class="subtitle">
+        Momen indah perjalanan kami ❤️
+    </p>
+
+    <div class="gallery">
+
+        <img id="gallery1">
+        <img id="gallery2">
+        <img id="gallery3">
+        <img id="gallery4">
+        <img id="gallery5">
+        <img id="gallery6">
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- QUOTE -->
+
+<section class="quote">
+
+<div class="container">
+
+    <p>
+        "Dan di antara tanda-tanda kekuasaan-Nya ialah
+        Dia menciptakan untukmu pasangan hidup dari
+        jenismu sendiri supaya kamu merasa tenteram
+        kepadanya."
+    </p>
+
+    <br>
+
+    <small>
+        QS. Ar-Rum: 21
+    </small>
+
+</div>
+
+</section>
+
+
+<!-- UCAPAN -->
+
+<section>
+
+<div class="container">
+
+    <h2 class="title">
+        Kirim Ucapan
+    </h2>
+
+    <div class="form-box">
+
+        <input
+            id="guestName"
+            placeholder="Nama Anda">
+
+        <textarea
+            id="guestMessage"
+            placeholder="Tulis ucapan dan doa..."></textarea>
+
+        <button
+            class="btn"
+            onclick="sendGreeting()">
+
+            💬 Kirim WhatsApp
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SHARE -->
+
+<section class="event">
+
+<div class="container">
+
+    <h2 class="title">
+        Bagikan Undangan
+    </h2>
+
+    <p class="subtitle">
+        Bagikan undangan kepada keluarga dan teman.
+    </p>
+
+    <button class="share" onclick="shareInvitation()">
+        📤 Bagikan Undangan
+    </button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        Terima kasih atas doa dan kehadirannya ❤️
+    </p>
+
+    <br>
+
+    <strong id="footerNames">
+        Nama Pria & Nama Wanita
+    </strong>
+
+</footer>
+
+</div>
+
+
+<!-- =====================================================
+     TOMBOL PENGATURAN
+===================================================== -->
+
+<button
+    class="settings-button"
+    onclick="openSettings()">
+
+    ⚙️
+
+</button>
+
+
+<!-- =====================================================
+     PANEL PENGATURAN
+===================================================== -->
+
+<div class="overlay" id="settings">
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <h2>
+            ⚙️ Pengaturan
+        </h2>
+
+        <button
+            class="close"
+            onclick="closeSettings()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <!-- NAMA -->
+
+    <div class="field">
+
+        <label>
+            👨 Nama Mempelai Pria
+        </label>
+
+        <input
+            id="inputMale"
+            type="text">
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            👩 Nama Mempelai Wanita
+        </label>
+
+        <input
+            id="inputFemale"
+            type="text">
+
+    </div>
+
+
+    <!-- TANGGAL -->
+
+    <div class="field">
+
+        <label>
+            📅 Tanggal Pernikahan
+        </label>
+
+        <input
+            id="inputDate"
+            type="date">
+
+    </div>
+
+
+    <!-- JAM -->
+
+    <div class="field">
+
+        <label>
+            ⏰ Jam Acara
+        </label>
+
+        <input
+            id="inputTime"
+            type="text"
+            placeholder="10.00 WIB - Selesai">
+
+    </div>
+
+
+    <!-- LOKASI -->
+
+    <div class="field">
+
+        <label>
+            📍 Lokasi
+        </label>
+
+        <input
+            id="inputLocation"
+            type="text"
+            placeholder="Gedung Pernikahan">
+
+    </div>
+
+
+    <!-- GOOGLE MAPS -->
+
+    <div class="field">
+
+        <label>
+            🗺️ Link Google Maps
+        </label>
+
+        <input
+            id="inputMaps"
+            type="url"
+            placeholder="https://maps.google.com/...">
+
+    </div>
+
+
+    <!-- WHATSAPP -->
+
+    <div class="field">
+
+        <label>
+            📱 Nomor WhatsApp
+        </label>
+
+        <input
+            id="inputWA"
+            type="tel"
+            placeholder="6285194094907">
+
+    </div>
+
+
+    <!-- FOTO PRIA -->
+
+    <div class="field">
+
+        <label>
+            📸 Foto Mempelai Pria
+        </label>
+
+        <input
+            id="maleImageInput"
+            type="file"
+            accept="image/*"
+            onchange="previewImage(this,'malePreview')">
+
+        <img
+            id="malePreview"
+            class="upload-preview">
+
+    </div>
+
+
+    <!-- FOTO WANITA -->
+
+    <div class="field">
+
+        <label>
+            📸 Foto Mempelai Wanita
+        </label>
+
+        <input
+            id="femaleImageInput"
+            type="file"
+            accept="image/*"
+            onchange="previewImage(this,'femalePreview')">
+
+        <img
+            id="femalePreview"
+            class="upload-preview">
+
+    </div>
+
+
+    <!-- FOTO COVER -->
+
+    <div class="field">
+
+        <label>
+            🖼️ Foto Cover
+        </label>
+
+        <input
+            id="coverImageInput"
+            type="file"
+            accept="image/*"
+            onchange="previewImage(this,'coverPreview')">
+
+        <img
+            id="coverPreview"
+            class="upload-preview">
+
+    </div>
+
+
+    <!-- GALERI -->
+
+    <div class="field">
+
+        <label>
+            🖼️ Foto Galeri
+        </label>
+
+        <input
+            id="galleryInput"
+            type="file"
+            accept="image/*"
+            multiple
+            onchange="previewGallery(this)">
+
+        <div id="galleryPreview"></div>
+
+    </div>
+
+
+    <!-- SIMPAN -->
+
+    <button
+        class="save"
+        onclick="saveSettings()">
+
+        💾 SIMPAN PERUBAHAN
+
+    </button>
+
+
+    <!-- RESET -->
+
+    <button
+        class="reset"
+        onclick="resetData()">
+
+        🔄 Kembalikan Data Awal
+
+    </button>
+
+
+    <!-- SHARE -->
+
+    <button
+        class="share"
+        onclick="shareInvitation()">
+
+        📤 BAGIKAN UNDANGAN
+
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA DEFAULT
+===================================================== */
+
+const defaultData = {
+
+    male:
+        "Nama pria",
+
+    female:
+        "Nama Wanita",
+
+    date:
+        "2026-12-20",
+
+    time:
+        "10.00 WIB - Selesai",
+
+    location:
+        "Gedung Pernikahan",
+
+    maps:
+        "https://maps.google.com",
+
+    whatsapp:
+        "628123456789",
+
+    malePhoto:
+        "",
+
+    femalePhoto:
+        "",
+
+    coverPhoto:
+        "",
+
+    gallery:
+        []
+
+};
+
+
+/* =====================================================
+   LOAD DATA
+===================================================== */
+
+let data =
+    JSON.parse(
+        localStorage.getItem("weddingData")
+    ) || defaultData;
+
+
+/* =====================================================
+   FORMAT TANGGAL
+===================================================== */
+
+function formatDate(dateString){
+
+    if(!dateString) return "";
+
+    const date =
+        new Date(dateString + "T00:00:00");
+
+    const days = [
+        "Minggu",
+        "Senin",
+        "Selasa",
+        "Rabu",
+        "Kamis",
+        "Jumat",
+        "Sabtu"
+    ];
+
+    const months = [
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember"
+    ];
+
+    return (
+        days[date.getDay()] +
+        ", " +
+        date.getDate() +
+        " " +
+        months[date.getMonth()] +
+        " " +
+        date.getFullYear()
+    );
+}
+
+
+/* =====================================================
+   TAMPILKAN DATA
+===================================================== */
+
+function render(){
+
+    const fullNames =
+        data.male +
+        " & " +
+        data.female;
+
+    document.getElementById("coverNames")
+        .textContent = fullNames;
+
+    document.getElementById("footerNames")
+        .textContent = fullNames;
+
+    document.getElementById("maleName")
+        .textContent = data.male;
+
+    document.getElementById("femaleName")
+        .textContent = data.female;
+
+    document.getElementById("coverDate")
+        .textContent = formatDate(data.date);
+
+    document.getElementById("eventDate")
+        .textContent = formatDate(data.date);
+
+    document.getElementById("eventTime")
+        .textContent = data.time;
+
+    document.getElementById("eventLocation")
+        .textContent = data.location;
+
+    document.getElementById("mapsButton")
+        .href = data.maps;
+
+
+    /* FOTO PRIA */
+
+    if(data.malePhoto){
+
+        document.getElementById("malePhoto")
+            .src = data.malePhoto;
+
+    }
+
+
+    /* FOTO WANITA */
+
+    if(data.femalePhoto){
+
+        document.getElementById("femalePhoto")
+            .src = data.femalePhoto;
+
+    }
+
+
+    /* COVER */
+
+    if(data.coverPhoto){
+
+        document.documentElement.style
+            .setProperty(
+                "--cover-image",
+                `url("${data.coverPhoto}")`
+            );
+
+    }else{
+
+        document.documentElement.style
+            .setProperty(
+                "--cover-image",
+                "linear-gradient(135deg,#806b5c,#30251f)"
+            );
+
+    }
+
+
+    /* GALERI */
+
+    for(let i=0;i<6;i++){
+
+        const img =
+            document.getElementById(
+                "gallery" + (i+1)
+            );
+
+        if(data.gallery[i]){
+
+            img.src = data.gallery[i];
+
+            img.style.display = "block";
+
+        }else{
+
+            img.style.display = "none";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN INVITATION
+===================================================== */
+
+function openInvitation(){
+
+    document.getElementById("cover")
+        .style.display = "none";
+
+    document.getElementById("content")
+        .style.display = "block";
+
+    createFlowers();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function openSettings(){
+
+    document.getElementById("settings")
+        .style.display = "block";
+
+    loadForm();
+
+}
+
+
+function closeSettings(){
+
+    document.getElementById("settings")
+        .style.display = "none";
+
+}
+
+
+/* =====================================================
+   LOAD FORM
+===================================================== */
+
+function loadForm(){
+
+    document.getElementById("inputMale")
+        .value = data.male;
+
+    document.getElementById("inputFemale")
+        .value = data.female;
+
+    document.getElementById("inputDate")
+        .value = data.date;
+
+    document.getElementById("inputTime")
+        .value = data.time;
+
+    document.getElementById("inputLocation")
+        .value = data.location;
+
+    document.getElementById("inputMaps")
+        .value = data.maps;
+
+    document.getElementById("inputWA")
+        .value = data.whatsapp;
+
+
+    if(data.malePhoto){
+
+        document.getElementById("malePreview")
+            .src = data.malePhoto;
+
+        document.getElementById("malePreview")
+            .style.display = "block";
+
+    }
+
+
+    if(data.femalePhoto){
+
+        document.getElementById("femalePreview")
+            .src = data.femalePhoto;
+
+        document.getElementById("femalePreview")
+            .style.display = "block";
+
+    }
+
+
+    if(data.coverPhoto){
+
+        document.getElementById("coverPreview")
+            .src = data.coverPhoto;
+
+        document.getElementById("coverPreview")
+            .style.display = "block";
+
+    }
+
+}
+
+
+/* =====================================================
+   IMAGE TO BASE64
+===================================================== */
+
+function imageToBase64(file){
+
+    return new Promise((resolve,reject)=>{
+
+        const reader =
+            new FileReader();
+
+        reader.onload =
+            () => resolve(reader.result);
+
+        reader.onerror =
+            reject;
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =====================================================
+   PREVIEW FOTO
+===================================================== */
+
+function previewImage(input,previewId){
+
+    const file =
+        input.files[0];
+
+    if(!file) return;
+
+    const preview =
+        document.getElementById(previewId);
+
+    const reader =
+        new FileReader();
+
+    reader.onload = function(e){
+
+        preview.src =
+            e.target.result;
+
+        preview.style.display =
+            "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================================
+   PREVIEW GALERI
+===================================================== */
+
+function previewGallery(input){
+
+    const container =
+        document.getElementById(
+            "galleryPreview"
+        );
+
+    container.innerHTML = "";
+
+    [...input.files]
+    .slice(0,6)
+    .forEach(file=>{
+
+        const img =
+            document.createElement("img");
+
+        img.src =
+            URL.createObjectURL(file);
+
+        img.style.width = "80px";
+        img.style.height = "80px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "10px";
+        img.style.margin = "5px";
+
+        container.appendChild(img);
+
+    });
+
+}
+
+
+/* =====================================================
+   SIMPAN
+===================================================== */
+
+async function saveSettings(){
+
+    data.male =
+        document.getElementById("inputMale").value;
+
+    data.female =
+        document.getElementById("inputFemale").value;
+
+    data.date =
+        document.getElementById("inputDate").value;
+
+    data.time =
+        document.getElementById("inputTime").value;
+
+    data.location =
+        document.getElementById("inputLocation").value;
+
+    data.maps =
+        document.getElementById("inputMaps").value;
+
+    data.whatsapp =
+        document.getElementById("inputWA").value;
+
+
+    /* FOTO PRIA */
+
+    const maleFile =
+        document.getElementById(
+            "maleImageInput"
+        ).files[0];
+
+    if(maleFile){
+
+        data.malePhoto =
+            await imageToBase64(maleFile);
+
+    }
+
+
+    /* FOTO WANITA */
+
+    const femaleFile =
+        document.getElementById(
+            "femaleImageInput"
+        ).files[0];
+
+    if(femaleFile){
+
+        data.femalePhoto =
+            await imageToBase64(femaleFile);
+
+    }
+
+
+    /* COVER */
+
+    const coverFile =
+        document.getElementById(
+            "coverImageInput"
+        ).files[0];
+
+    if(coverFile){
+
+        data.coverPhoto =
+            await imageToBase64(coverFile);
+
+    }
+
+
+    /* GALERI */
+
+    const galleryFiles =
+        document.getElementById(
+            "galleryInput"
+        ).files;
+
+    if(galleryFiles.length){
+
+        data.gallery = [];
+
+        for(
+            let i=0;
+            i<Math.min(galleryFiles.length,6);
+            i++
+        ){
+
+            const base64 =
+                await imageToBase64(
+                    galleryFiles[i]
+                );
+
+            data.gallery.push(base64);
+
+        }
+
+    }
+
+
+    /* SIMPAN BROWSER */
+
+    try{
+
+        localStorage.setItem(
+            "weddingData",
+            JSON.stringify(data)
+        );
+
+    }catch(error){
+
+        alert(
+            "Foto terlalu besar. Coba gunakan foto dengan ukuran lebih kecil."
+        );
+
+        return;
+
+    }
+
+
+    render();
+
+    closeSettings();
+
+    alert(
+        "✅ Perubahan berhasil disimpan!"
+    );
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetData(){
+
+    if(
+        !confirm(
+            "Kembalikan semua data ke pengaturan awal?"
+        )
+    ){
+
+        return;
+
+    }
+
+    localStorage.removeItem(
+        "weddingData"
+    );
+
+    data =
+        JSON.parse(
+            JSON.stringify(defaultData)
+        );
+
+    render();
+
+    loadForm();
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function countdown(){
+
+    if(!data.date) return;
+
+    const target =
+        new Date(
+            data.date +
+            "T" +
+            "10:00:00"
+        ).getTime();
+
+    const now =
+        new Date().getTime();
+
+    const distance =
+        target - now;
+
+    if(distance <= 0){
+
+        document.getElementById("days")
+            .textContent = "0";
+
+        document.getElementById("hours")
+            .textContent = "0";
+
+        document.getElementById("minutes")
+            .textContent = "0";
+
+        document.getElementById("seconds")
+            .textContent = "0";
+
+        return;
+
+    }
+
+    document.getElementById("days")
+        .textContent =
+        Math.floor(
+            distance /
+            (1000*60*60*24)
+        );
+
+    document.getElementById("hours")
+        .textContent =
+        Math.floor(
+            (distance %
+            (1000*60*60*24)) /
+            (1000*60*60)
+        );
+
+    document.getElementById("minutes")
+        .textContent =
+        Math.floor(
+            (distance %
+            (1000*60*60)) /
+            (1000*60)
+        );
+
+    document.getElementById("seconds")
+        .textContent =
+        Math.floor(
+            (distance %
+            (1000*60)) /
+            1000
+        );
+
+}
+
+setInterval(countdown,1000);
+
+
+/* =====================================================
+   WHATSAPP UCAPAN
+===================================================== */
+
+function sendGreeting(){
+
+    const name =
+        document.getElementById(
+            "guestName"
+        ).value;
+
+    const message =
+        document.getElementById(
+            "guestMessage"
+        ).value;
+
+    if(!name || !message){
+
+        alert(
+            "Isi nama dan ucapan terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+    const text =
+        `Assalamu'alaikum.%0A%0A` +
+        `Nama: ${name}%0A` +
+        `Ucapan: ${message}%0A%0A` +
+        `${data.male} & ${data.female}`;
+
+    window.open(
+        "https://wa.me/" +
+        data.whatsapp +
+        "?text=" +
+        text,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   BAGIKAN
+===================================================== */
+
+function shareInvitation(){
+
+    const shareData = {
+
+        title:
+            "Undangan Pernikahan " +
+            data.male +
+            " & " +
+            data.female,
+
+        text:
+            "Undangan pernikahan " +
+            data.male +
+            " & " +
+            data.female,
+
+        url:
+            window.location.href
+
+    };
+
+
+    if(navigator.share){
+
+        navigator.share(shareData);
+
+    }else{
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        alert(
+            "🔗 Link undangan berhasil disalin."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   BUNGA JATUH
+===================================================== */
+
+let flowerStarted = false;
+
+function createFlowers(){
+
+    if(flowerStarted) return;
+
+    flowerStarted = true;
+
+    setInterval(()=>{
+
+        const flower =
+            document.createElement("div");
+
+        flower.className =
+            "flower";
+
+        flower.textContent =
+            ["🌸","🌷","🌺","🌼"]
+            [
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+        flower.style.left =
+            Math.random()*100 + "vw";
+
+        flower.style.fontSize =
+            (15 + Math.random()*15) + "px";
+
+        flower.style.animationDuration =
+            (5 + Math.random()*5) + "s";
+
+        document.body.appendChild(flower);
+
+        setTimeout(()=>{
+
+            flower.remove();
+
+        },10000);
+
+    },800);
+
+}
+
+
+/* =====================================================
+   JALANKAN
+===================================================== */
+
+render();
+
+countdown();
+
+</script>
+
+</body>
+</html>
